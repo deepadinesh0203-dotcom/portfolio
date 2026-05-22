@@ -1,458 +1,227 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dinesh | Java Full Stack Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-      font-family:'Poppins',sans-serif;
-    }
 
-    body{
-      background:#050816;
-      color:white;
-      overflow-x:hidden;
-    }
+  <link rel="stylesheet" href="style.css"/>
 
-    body::before{
-      content:'';
-      position:fixed;
-      width:500px;
-      height:500px;
-      background:#7f5af0;
-      filter:blur(160px);
-      top:-100px;
-      right:-120px;
-      opacity:0.4;
-      z-index:-1;
-    }
-
-    body::after{
-      content:'';
-      position:fixed;
-      width:400px;
-      height:400px;
-      background:#00c2ff;
-      filter:blur(180px);
-      bottom:-120px;
-      left:-100px;
-      opacity:0.25;
-      z-index:-1;
-    }
-
-    nav{
-      width:100%;
-      padding:20px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:fixed;
-      top:0;
-      background:rgba(255,255,255,0.04);
-      backdrop-filter:blur(12px);
-      z-index:1000;
-      border-bottom:1px solid rgba(255,255,255,0.1);
-    }
-
-    .logo{
-      font-size:28px;
-      font-weight:700;
-      color:#fff;
-    }
-
-    .logo span{
-      color:#7f5af0;
-    }
-
-    nav ul{
-      display:flex;
-      gap:30px;
-      list-style:none;
-    }
-
-    nav ul li a{
-      color:white;
-      text-decoration:none;
-      font-size:15px;
-      transition:0.3s;
-    }
-
-    nav ul li a:hover{
-      color:#7f5af0;
-    }
-
-    section{
-      padding:110px 8%;
-    }
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:60px;
-      flex-wrap:wrap;
-    }
-
-    .hero-text{
-      flex:1;
-    }
-
-    .hero-text h3{
-      font-size:22px;
-      color:#bdbdbd;
-      margin-bottom:15px;
-    }
-
-    .hero-text h1{
-      font-size:72px;
-      line-height:1.1;
-      margin-bottom:20px;
-    }
-
-    .hero-text h1 span{
-      color:#7f5af0;
-    }
-
-    .hero-text p{
-      color:#cfcfcf;
-      line-height:1.8;
-      max-width:600px;
-      margin-bottom:35px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:14px 34px;
-      background:#7f5af0;
-      color:white;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:600;
-      transition:0.3s;
-      box-shadow:0 0 20px rgba(127,90,240,0.4);
-    }
-
-    .btn:hover{
-      transform:translateY(-5px);
-      background:#6842df;
-    }
-
-    .hero-image{
-      flex:1;
-      display:flex;
-      justify-content:center;
-    }
-
-    .profile-card{
-      width:350px;
-      height:420px;
-      border-radius:30px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.1);
-      backdrop-filter:blur(20px);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    .profile-card::before{
-      content:'';
-      position:absolute;
-      width:180px;
-      height:180px;
-      background:#7f5af0;
-      border-radius:50%;
-      filter:blur(60px);
-      top:-40px;
-      right:-20px;
-      opacity:0.5;
-    }
-
-    .profile-card h2{
-      font-size:42px;
-      text-align:center;
-      z-index:2;
-    }
-
-    .section-title{
-      font-size:42px;
-      margin-bottom:50px;
-      text-align:center;
-    }
-
-    .section-title span{
-      color:#7f5af0;
-    }
-
-    .about{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:40px;
-      align-items:center;
-    }
-
-    .about-card,
-    .skill-box,
-    .project-card,
-    .contact-box{
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.1);
-      border-radius:24px;
-      padding:30px;
-      backdrop-filter:blur(20px);
-      transition:0.4s;
-    }
-
-    .about-card:hover,
-    .skill-box:hover,
-    .project-card:hover,
-    .contact-box:hover{
-      transform:translateY(-10px);
-      border-color:#7f5af0;
-    }
-
-    .about-card p{
-      line-height:1.9;
-      color:#d3d3d3;
-    }
-
-    .skills-grid,
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:25px;
-    }
-
-    .skill-box h3,
-    .project-card h3{
-      margin-bottom:15px;
-      color:#7f5af0;
-    }
-
-    .skill-box p,
-    .project-card p{
-      color:#cfcfcf;
-      line-height:1.7;
-    }
-
-    .project-card{
-      position:relative;
-      overflow:hidden;
-    }
-
-    .project-card::before{
-      content:'';
-      position:absolute;
-      width:120px;
-      height:120px;
-      background:#7f5af0;
-      filter:blur(70px);
-      top:-20px;
-      right:-20px;
-      opacity:0.3;
-    }
-
-    .contact{
-      text-align:center;
-    }
-
-    .contact-box p{
-      margin:15px 0;
-      color:#d6d6d6;
-      font-size:17px;
-    }
-
-    footer{
-      text-align:center;
-      padding:25px;
-      border-top:1px solid rgba(255,255,255,0.1);
-      color:#bcbcbc;
-    }
-
-    @media(max-width:900px){
-      .hero-text h1{
-        font-size:52px;
-      }
-
-      nav ul{
-        display:none;
-      }
-
-      .hero{
-        text-align:center;
-        justify-content:center;
-      }
-
-      .hero-text p{
-        margin:auto auto 35px;
-      }
-    }
-
-    @media(max-width:500px){
-      .hero-text h1{
-        font-size:40px;
-      }
-
-      .section-title{
-        font-size:32px;
-      }
-
-      .profile-card{
-        width:100%;
-      }
-    }
-  </style>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    rel="stylesheet"
+  />
 </head>
+
 <body>
 
-  <nav>
-    <div class="logo">Di<span>nesh</span></div>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Dinesh.</div>
 
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
+  <!-- HERO -->
   <section class="hero" id="home">
+
     <div class="hero-text">
       <h3>Hello, I'm</h3>
-      <h1>Dinesh <span>C</span></h1>
+
+      <h1>Dinesh</h1>
+
+      <h2>Java Full Stack Developer</h2>
+
       <p>
-        Passionate Java Full Stack Developer focused on creating modern,
-        responsive and user-friendly web applications using Java, Spring Boot,
+        Passionate Full Stack Developer focused on building
+        responsive web applications using Java, Spring Boot,
         HTML, CSS, JavaScript and MySQL.
       </p>
 
-      <a href="#contact" class="btn">Hire Me</a>
+      <div class="buttons">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#" class="btn-outline">Download CV</a>
+      </div>
+
+      <div class="socials">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
 
     <div class="hero-image">
-      <div class="profile-card">
-        <h2>Java<br>Full Stack<br>Developer</h2>
-      </div>
+      <img src="https://i.ibb.co/jrRb11q/programmer.png" alt="developer">
     </div>
+
   </section>
 
-  <section id="about">
-    <h2 class="section-title">About <span>Me</span></h2>
+  <!-- ABOUT -->
+  <section class="about" id="about">
 
-    <div class="about">
-      <div class="about-card">
-        <p>
-          I am a creative and dedicated Java Full Stack Developer with strong
-          knowledge in frontend and backend development. I enjoy building modern
-          websites with clean UI, responsive design and smooth user experience.
-          My goal is to create high-quality applications that solve real-world
-          problems.
-        </p>
-      </div>
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-container">
 
       <div class="about-card">
+        <h3>Who Am I?</h3>
+
         <p>
-          I work with Java, Spring Boot, MySQL, HTML, CSS and JavaScript to
-          build powerful web applications. I continuously learn new technologies
-          and improve my coding skills to become a professional software
-          developer.
+          I am a Java Full Stack Developer who enjoys creating
+          modern and user-friendly websites with clean design
+          and responsive layouts.
         </p>
       </div>
+
+      <div class="about-card">
+        <h3>Education</h3>
+
+        <p>
+          BCA / Computer Science Student passionate about
+          software development and UI design.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>Experience</h3>
+
+        <p>
+          Created portfolio websites, online grocery systems,
+          responsive landing pages and Java-based projects.
+        </p>
+      </div>
+
     </div>
+
   </section>
 
-  <section id="skills">
-    <h2 class="section-title">My <span>Skills</span></h2>
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
 
-    <div class="skills-grid">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-container">
+
       <div class="skill-box">
-        <h3>Frontend</h3>
-        <p>HTML5, CSS3, JavaScript, Responsive Design, UI Development</p>
+        <span>HTML</span>
+        <div class="bar">
+          <div class="progress html"></div>
+        </div>
       </div>
 
       <div class="skill-box">
-        <h3>Backend</h3>
-        <p>Java, Spring Boot, REST API, JDBC</p>
+        <span>CSS</span>
+        <div class="bar">
+          <div class="progress css"></div>
+        </div>
       </div>
 
       <div class="skill-box">
-        <h3>Database</h3>
-        <p>MySQL, Database Management, SQL Queries</p>
+        <span>JavaScript</span>
+        <div class="bar">
+          <div class="progress js"></div>
+        </div>
       </div>
 
       <div class="skill-box">
-        <h3>Tools</h3>
-        <p>VS Code, , GitHub, Postman</p>
+        <span>Java</span>
+        <div class="bar">
+          <div class="progress java"></div>
+        </div>
       </div>
+
+      <div class="skill-box">
+        <span>Spring Boot</span>
+        <div class="bar">
+          <div class="progress spring"></div>
+        </div>
+      </div>
+
+      <div class="skill-box">
+        <span>MySQL</span>
+        <div class="bar">
+          <div class="progress mysql"></div>
+        </div>
+      </div>
+
     </div>
+
   </section>
 
-  <section id="projects">
-    <h2 class="section-title">My <span>Projects</span></h2>
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="project-container">
 
       <div class="project-card">
-        <h3>Online grocery</h3>
-        Online Grocery is a modern web application for ordering groceries online with an easy shopping experience, product management, cart system and fast delivery features.
+        <h3>Online Grocery</h3>
+
+        <p>
+          Modern grocery shopping web application built
+          using Java Full Stack technologies.
         </p>
+
+        <a href="#">GitHub</a>
       </div>
 
       <div class="project-card">
-        <h3>Fake Image Deactivate </h3>
+        <h3>Portfolio Website</h3>
+
         <p>
-          Developed a Fake Image Detection System using CNN, Flask, MySQL, and OpenCV for real-time image classification. 
+          Personal developer portfolio with modern UI
+          and responsive design.
         </p>
+
+        <a href="#">GitHub</a>
       </div>
 
       <div class="project-card">
-        <h3>Employee Database</h3>
+        <h3>Student Management</h3>
+
         <p>
-          To design and implement a database system for managing employee and department information within an organization.
+          Java CRUD application for managing student
+          records using MySQL database.
         </p>
+
+        <a href="#">GitHub</a>
       </div>
+
     </div>
+
   </section>
 
-  <section id="contact" class="contact">
-    <h2 class="section-title">Contact <span>Me</span></h2>
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
 
-    <div class="contact-box">
-      <p><strong>Name:</strong> Dinesh</p>
-      <p><strong>Role:</strong> Java Full Stack Developer</p>
-      <p><strong>Email:</strong> dinesh@gmail.com</p>
-      <p><strong>Phone:</strong> +91 6380807325</p>
-      <a href="#home" class="btn">Back To Top</a>
-    </div>
+    <h2 class="section-title">Contact Me</h2>
+
+    <form class="contact-form">
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <textarea rows="5" placeholder="Message"></textarea>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    © 2026 Dinesh | Java Full Stack Developer
+    <p>© 2026 Dinesh | Java Full Stack Developer</p>
   </footer>
-
-  <script>
-    window.addEventListener('scroll',()=>{
-      const nav=document.querySelector('nav');
-
-      if(window.scrollY>50){
-        nav.style.background='rgba(5,8,22,0.95)';
-      }
-      else{
-        nav.style.background='rgba(255,255,255,0.04)';
-      }
-    });
-  </script>
 
 </body>
 </html>
